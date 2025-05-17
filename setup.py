@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="eyewear_counter",
-    version="0.1.1",
+    version="0.1.3",
     packages=find_packages(),
     install_requires=[
         "torch",
@@ -25,7 +25,7 @@ setup(
     },
     author="Ekaterina Solovyeva",
     author_email="qksolov@gmail.com",
-    description="Fast model for counting eyewear types in large sets of images.",
+    description="Fast model for counting eyewear types on faces in large sets of images.",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/qksolov/eyewear-counter",

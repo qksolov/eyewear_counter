@@ -10,7 +10,7 @@ import torch
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 model = EyewearCounter(device=device)
 
-example_file_path = "https://github.com/qksolov/eyewear-counter/raw/main/assets/example_data.csv"
+example_file_path = "https://github.com/qksolov/eyewear-counter/raw/refs/heads/main/assets/example_data.csv"
 example_df = pd.read_csv(example_file_path, encoding='cp1251', sep=';')
 _, summary_df_dummy, plot_df_dummy = generate_report([], 0)
 summary_df_dummy.replace(0, "", inplace=True)
@@ -153,7 +153,6 @@ css = """
     max-width: 1300px !important;
     margin: 0 auto !important;
 }
-
 #file-container {
     height: 63px !important;
 }
@@ -161,17 +160,11 @@ css = """
     outline: 2px solid #3b82f6 !important;
     outline-offset: -1px !important;
 }
-#inactive {
-
-}
 #btn {
     font-weight: 400 !important;
     font-size: 15px !important;
     text-shadow: 0.75px 0 0 currentColor;
     height: 41px !important;
-}
-#inst_text {
-
 }
 .sort-buttons {
     display: none !important;
@@ -194,7 +187,8 @@ with gr.Blocks(css=css, theme=gr.themes.Base()) as demo:
                 </div>
                 <span style="color: #97979e; font-size: 14px;">Устройство: {"[GPU]" if device == 'cuda' else "[CPU]"}</span>
             </div>
-            """
+            """,
+            sanitize_html=False
         )
 
 
