@@ -183,16 +183,20 @@ with gr.Blocks(css=css, theme=gr.themes.Base()) as demo:
     df_input_state = gr.State()
 
     with gr.Row(elem_id="interface-container", scale=0, equal_height=True):
-        gr.Markdown("# EyewearCounter")
         gr.Markdown(
             f"""
-            <div style="color: #97979e; font-size: 14px;">
-                <div style="height: 13px;"></div>
-                Устройство: {"[GPU]" if device == 'cuda' else "[CPU]"}
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                <div style="display: flex; align-items: baseline; gap: 20px;">
+                    <h1 style="margin: 0;">Eyewear Counter</h1>
+                    <a href="https://github.com/qksolov/eyewear-counter" target="_blank" style="color: #3b82f6; font-size: 14px">
+                        GitHub
+                    </a>
+                </div>
+                <span style="color: #97979e; font-size: 14px;">Устройство: {"[GPU]" if device == 'cuda' else "[CPU]"}</span>
             </div>
-            """,
-            rtl=True
+            """
         )
+
 
     with gr.Row(elem_id="interface-container", scale=0):
         with gr.Column(scale=1):
@@ -251,12 +255,12 @@ with gr.Blocks(css=css, theme=gr.themes.Base()) as demo:
                         show_reset_button=False,
                     )
                     batch_size = gr.Slider(
-                        value=40 if device == 'cuda' else 4, minimum=1, maximum=100, step=1,
+                        value=32 if device == 'cuda' else 8, minimum=1, maximum=100, step=1,
                         label="Размер батча",
                         show_reset_button=False,
                     )
                     max_workers = gr.Radio(                        
-                        value=3, choices=[1, 2, 3, 4],
+                        value=2, choices=[1, 2, 3, 4],
                         label="Максимальное количество потоков",
                     )
             
